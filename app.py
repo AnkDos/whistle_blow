@@ -25,6 +25,13 @@ def action(action) :
     elif action == 'share_opinion' :
         return render_template('share_opinion.html')    
 
+@app.route('/emp/blow_whistle/subm' , methods = ['GET','POST'])
+def submit_whist() :
+    return "hi"     
+
+@app.route('/emp/share_opinion/subm' , methods = ['GET' , 'POST'])
+def submit_opp() :
+    return "his"
 
 
 if __name__ == '__main__' :
