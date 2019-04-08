@@ -18,6 +18,12 @@ def emp(choice) :
     else : 
         return "Wrong Choice Mate "
 
+@app.route('/emp/<action>')
+def action(action) :
+    if action == 'blow_whistle' :
+        return render_template('blow_whistle.html')
+    elif action == 'share_opinion' :
+        return render_template('share_opinion.html')    
 
 
 

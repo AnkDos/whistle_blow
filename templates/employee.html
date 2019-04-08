@@ -1,3 +1,40 @@
-<h1>I'm Employee AF 
-</h1>
+<html>
+    <head>
+    <link rel = "stylesheet" href  = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>    
+     <link rel = "stylesheet" href = "{{ url_for('static',filename='style.css') }}">
+    </head>
+    <body class = "body_lp">
+        <div class = "container">
+              <div class = "row">
+                  <div class = "col-sm-1">
 
+                  </div>
+                  <div class = "col-sm-10">
+                      <h1 class = "fh"> Hello Hard Working Employee ! </h1>
+                  </div>
+              </div>  
+
+        </div>
+
+     <div class ="container">
+         <div class = "row">
+            <div class = "col-sm-2">
+
+            </div>
+
+            <div class = "col-sm-4">
+                   <a href = {{url_for('action' , action = 'blow_whistle')}}> <button class="btn btn-primary" ><i class="fa fa-home"></i> Blow Whistle !</button> </a>
+                </div>
+
+                <div class = "col-sm-4">
+                <a href = {{url_for('action' ,  action = 'share_opinion')}}>  <button class="btn btn-warning"  ><i class="fa fa-bars"></i>Share Opinion</button></a>
+                        
+                    </div>
+        
+         </div>
+     </div>
+
+
+    </body>
+</html>
