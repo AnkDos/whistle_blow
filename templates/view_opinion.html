@@ -19,26 +19,33 @@
                               <thead>
                                 <tr>
                                   <th>#</th>
-                                  <th>Firstname</th>
-                                  <th>Lastname</th>
-                                  <th>Age</th>
-                                  <th>City</th>
-                                  <th>Country</th>
+                                  <th>Subject </th>
+                                  <th>Message </th>
+                                  <th>Date Raised</th>
+                                  <th>Sentiment Params</th>
+                                  <th>Sarcasm Params </th>
+                                  <th>Remark_status</th>
+                                   <th>Date Resolved </th>
+                                   <th>Action </th>
                                 </tr>
                               </thead>
                               <tbody>
+                       {% for row in rows %}  
                                 <tr>
-                                  <td>1</td>
-                                  <td>Anna</td>
-                                  <td>Pitt</td>
-                                  <td>35</td>
-                                  <td>New York</td>
-                                  <td>USA</td>
+                                  <td>{{row["sno"]}}</td>
+                                  <td>{{row["sub"]}}</td>
+                                  <td>{{row["message"]}}</td>
+                                  <td>{{row["date_su"]}}</td>
+                                  <td>{{row["sentiments"]}}</td>
+                                  <td>{{row["sarcasm"]}}</td>
+                                  <td>{{row["remark"]}}</td>
+                                  <td>{{row["date_re"]}}</td>
+                                  <td><a> <button type="button" class="btn btn-info">Solve and Add Remarks</button> </a> </td>
                                 </tr>
+                      {% endfor%}
                               </tbody>
                             </table>
                             </div>
-                  
 
              </div>
            </div>    

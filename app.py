@@ -61,13 +61,23 @@ def submit_opp() :
 
 @app.route('/senr/see_whistle')
 def return_whistle():
-    return render_template('view_whistle.html')
-
+    con = sql.connect("dbs.db")
+    con.row_factory = sql.Row
+    cur = con.cursor()
+    cur.execute("select * from whistles")
+    rows = cur.fetchall()
+    return render_template('view_whistle.html' , rows = rows)
+      
     
 
 @app.route('/senr/see_opinions')
 def return_opinions():
-    return render_template('view_opinion.html')
+    con = sql.connect("dbs.db")
+    con.row_factory = sql.Row
+    cur = con.cursor()
+    cur.execute("select * from opinion")
+    rows = cur.fetchall()
+    return render_template('view_opinion.html' , rows = rows)
     
         
 if __name__ == '__main__' :
