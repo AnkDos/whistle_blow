@@ -2,19 +2,39 @@
     <head>
     <link rel = "stylesheet" href  = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>    
-     <link rel = "stylesheet" src = "{{ url_for('static',filename='style.css') }}">
+     <link rel = "stylesheet" href = "{{ url_for('static',filename='style.css') }}">
     </head>
-    <body>
-       <div class = "container">
-        <div class = "row">
-           <div class = "col-sm-6">
-               Hello 
-           </div>  
-           <div class = "col-sm-6">
-                world
-          </div>
-    </div>
-        <h1> Test </h1>
+    <body class = "body_lp">
+        <div class = "container">
+              <div class = "row">
+                  <div class = "col-sm-1">
+
+                  </div>
+                  <div class = "col-sm-10">
+                      <h1 class = "fh"> Hello Hard Working Employee ! </h1>
+                  </div>
+              </div>  
+
+        </div>
+
+     <div class ="container">
+         <div class = "row">
+            <div class = "col-sm-2">
+
+            </div>
+
+            <div class = "col-sm-4">
+                   <a href = {{url_for('emp' , choice = 'emp')}}> <button class="btn btn-primary" ><i class="fa fa-home"></i> I'm Here to share something !</button> </a>
+                </div>
+
+                <div class = "col-sm-4">
+                <a href = {{url_for('emp' , choice = 'senr')}}>  <button class="btn btn-warning"  ><i class="fa fa-bars"></i>I'm here to resolve some issue !</button></a>
+                        
+                    </div>
+        
+         </div>
+     </div>
+
 
     </body>
 </html>

@@ -7,7 +7,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return  'Hello'  #render_template('hi.html')
+    return  render_template('landing.html')
+
+@app.route('/<choice>')
+def emp(choice) :
+    if choice == 'emp' :
+        return render_template('employee.html')
+    elif choice == 'senr' :
+        return render_template('seniors.html')
+    else : 
+        return "Wrong Choice Mate "
+
+
 
 
 if __name__ == '__main__' :
