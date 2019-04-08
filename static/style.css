@@ -1,6 +1,6 @@
 .body_lp{
     /* background-color: #d6cbcd; */
-     background-color: #eaeaea ;
+     background-color: #f8eeee ;
 }
 
 .fh{
@@ -9,4 +9,9 @@
     color:#99011d ;
     font-family: cursive;
     padding-bottom: 20px;
+}
+
+#returns{
+    font-family: cursive;
+    color:#99011d ;
 }
