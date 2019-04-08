@@ -2,6 +2,11 @@ import os.path
 from flask import request
 from flask import Flask, render_template , redirect , url_for , g
 import sqlite3 as sql
+import sys 
+import os
+sys.path.append(os.path.abspath("/home/ankur/whistle_blow/helpers"))
+from sentinsar import *
+
 
 app = Flask(__name__)
 
@@ -32,34 +37,27 @@ def action(action) :
 
 @app.route('/emp/blow_whistle/subm' , methods = ['GET','POST'])
 def submit_whist() :
-    return "hi"     
-
+    emp = request.form.get('emp')
+    sub = request.form.get('sub')
+    msg = request.form.get('msg')
+    with sql.connect("dbs.db") as con:
+        cur = con.cursor()
+        cur.execute("INSERT INTO whistles (emp_name,sub,message,sentiments,sarcasm) VALUES (?,?,?,?,?)",(emp,sub,msg,return_sentiments(msg),return_sarcasm(msg)))
+        con.commit()    
+    return redirect(url_for('action',action = 'share_opinion' ,msg = 'Thanks For Sharing With us , Will process soon !!!'))
+    
+    
 @app.route('/emp/share_opinion/subm' , methods = ['GET' , 'POST'])
 def submit_opp() :
     sub = request.form.get('sub')
     msg = request.form.get('msg')
-    # return (sub + " " + msg)
-    # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    # db_path = os.path.join(BASE_DIR, "database.db")
-    with sql.connect("dbz.db") as con:
+    
+    with sql.connect("dbs.db") as con:
         cur = con.cursor()
-        cur.execute("INSERT INTO opinion (sub,message) VALUES (?,?)",(sub,msg) )
+        cur.execute("INSERT INTO opinion (sub,message,sentiments,sarcasm) VALUES (?,?,?,?)",(sub,msg,return_sentiments(msg),return_sarcasm(msg)))
         con.commit()    
         return redirect(url_for('action',action = 'share_opinion' ,msg = 'Thanks For Sharing With us , Will process soon !!!'))
 
         
-#     con = sql.connect("database.db")
-#     con.row_factory = sql.Row
-#     cur = con.cursor()
-#     cur.execute("select * from students") 
-#     rows = cur.fetchall(); 
-
-
-
-
-
-
-
-
 if __name__ == '__main__' :
     app.run()
