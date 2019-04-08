@@ -58,6 +58,17 @@ def submit_opp() :
         con.commit()    
         return redirect(url_for('action',action = 'share_opinion' ,msg = 'Thanks For Sharing With us , Will process soon !!!'))
 
+
+@app.route('/senr/see_whistle')
+def return_whistle():
+    return render_template('view_whistle.html')
+
+    
+
+@app.route('/senr/see_opinions')
+def return_opinions():
+    return render_template('view_opinion.html')
+    
         
 if __name__ == '__main__' :
     app.run()
