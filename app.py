@@ -84,13 +84,49 @@ def return_opinions():
 @app.route('/update/add_whistle_remark')
 def add_whistle_remarks() :
     reqs = request.args.get('post_id') 
-    return render_template('update_whistle_remark.html' , post_id = reqs)
+    message = request.args.get('msg')
+    if message is None :
+        message = ''
+    return render_template('update_whistle_remark.html' , post_id = reqs,message = message)
 
 @app.route('/update/add_opinion_remark')
 def add_opinion_remarks() :
     reqs = request.args.get('post_id')
-    return render_template('update_opinion_remark.html' , post_id = reqs)
+    message = request.args.get('msg')
+    if message is None :
+        message = ''
+    return render_template('update_opinion_remark.html' , post_id = reqs ,message = message)
 
+
+@app.route('/senr/update_opinion' ,  methods = ['GET' , 'POST'])
+def update_opinion() : 
+    date_r = datetime.datetime.now()
+    date_re = str(date_r).split('.')[0]
+    pid    = request.form.get('pid')
+    pid = int(pid)
+    remark = request.form.get('remark')
+    with sql.connect("dbs.db") as con:
+        cur = con.cursor()
+        cur.execute("update opinion set remark=?, date_re=? where sno=?", (remark, date_re, pid))
+        con.commit()    
+     
+    return redirect(url_for('add_opinion_remarks',msg = 'updated_opinion'))
+
+
+@app.route('/senr/update_whistle', methods = ['GET' , 'POST'])
+def update_whistle() :
+    
+    date_r = datetime.datetime.now()
+    date_re = str(date_r).split('.')[0]
+    pid    = request.form.get('pid')
+    pid = int(pid)
+    remark = request.form.get('remark')
+    with sql.connect("dbs.db") as con:
+        cur = con.cursor()
+        cur.execute("update whistles set remark=?, date_re=? where sno=?", (remark, date_re, pid))
+        con.commit() 
+
+    return redirect(url_for('add_whistle_remarks',msg = 'updated_whistle'))
 
 if __name__ == '__main__' :
     app.run()
