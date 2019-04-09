@@ -1,4 +1,5 @@
 import os.path
+import datetime
 from flask import request
 from flask import Flask, render_template , redirect , url_for , g
 import sqlite3 as sql
@@ -80,6 +81,13 @@ def return_opinions():
     return render_template('view_opinion.html' , rows = rows)
     
 
+@app.route('/update/add_whistle_remark')
+def add_whistle_remark(post_id) :
+    return render_template('update_whistle_remark.html' , post_id = post_id)
+
+@app.route('/update/add_opinion_remark')
+def add_opinion_remark(post_id) :
+    return render_template('update_opinion_remark.html' , post_id = post_id)
 
 
 if __name__ == '__main__' :

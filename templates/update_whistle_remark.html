@@ -1,0 +1,36 @@
+
+<html>
+    <head>
+    <link rel = "stylesheet" href  = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>    
+     <link rel = "stylesheet" href = "{{ url_for('static',filename='style.css') }}">
+    </head>
+
+    <body class = "body_lp">
+         <h1 class = "fh" >Update and resolve the matter by adding remark </h1>
+       <div class = "container">
+          <div class = "row">
+              <div class = "col">
+                
+                    <form method = "POST" action = "/emp/share_opinion/subm">
+                           
+                            <div class="form-group">
+                              <label for="Message ">Type In the remark and click on resolve</label>
+                              <textarea  class="form-control" id="msg" placeholder="Your Valueable message" name = "remark"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Resolve</button>
+                        </form>
+                        <font color = "red"><p id = "returns"> {{message}} </p></font>
+                
+                     {{post_id}}
+            </div>
+          </div>    
+       </div>
+       <footer> 
+        <a href = {{url_for('emp' , choice = 'senr' )}} > Jump Back To Main Page ? </a>
+        </footer>
+   
+    </body>
+    
+</html>
