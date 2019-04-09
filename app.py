@@ -82,12 +82,14 @@ def return_opinions():
     
 
 @app.route('/update/add_whistle_remark')
-def add_whistle_remark(post_id) :
-    return render_template('update_whistle_remark.html' , post_id = post_id)
+def add_whistle_remarks() :
+    reqs = request.args.get('post_id') 
+    return render_template('update_whistle_remark.html' , post_id = reqs)
 
 @app.route('/update/add_opinion_remark')
-def add_opinion_remark(post_id) :
-    return render_template('update_opinion_remark.html' , post_id = post_id)
+def add_opinion_remarks() :
+    reqs = request.args.get('post_id')
+    return render_template('update_opinion_remark.html' , post_id = reqs)
 
 
 if __name__ == '__main__' :
