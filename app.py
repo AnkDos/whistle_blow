@@ -79,6 +79,8 @@ def return_opinions():
     rows = cur.fetchall()
     return render_template('view_opinion.html' , rows = rows)
     
-        
+
+
+
 if __name__ == '__main__' :
     app.run()
